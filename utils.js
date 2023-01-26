@@ -17,7 +17,7 @@ export const getFollowers = async (userId, userName) => {
     while (hasNextPage) {
         
         let resp = await getPage(params, nextToken, url);
-        console.log(resp)
+        // console.log(resp)
         if (resp && resp.meta && resp.meta.result_count && resp.meta.result_count > 0) {
             if (resp.data) {
                 users.push.apply(users, resp.data);
@@ -34,7 +34,7 @@ export const getFollowers = async (userId, userName) => {
         await sleep(INTERVAL);
     }
     console.log(`${userName}: Got ${users.length} users.`);
-    fs.writeFileSync('result.csv', `User Count,${users.length}`, {flag: 'a'});
+    fs.writeFileSync('result.csv', `User Count,${users.length}\r\n`, {flag: 'a'});
     return users;
 }
 
