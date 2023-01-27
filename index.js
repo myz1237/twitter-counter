@@ -3,11 +3,11 @@ import { getFollowers, getUserId } from "./utils.js";
 import fs from 'fs'
 
 const nameList = [
-	'1kxnetwork',
-	'RariCapital',
-	'0xMaki',
-	'CryptoMessiah',
-	'Tetranode',
+    // '1kxnetwork',
+	// 'RariCapital',
+	// '0xMaki',
+	// 'CryptoMessiah',
+	// 'Tetranode',
 	'bluekirbyfi',
 	'bantg',
 	'DeFianceCapital',
@@ -108,6 +108,10 @@ async function main(){
     for (const username of nameList){
         console.log('Turn to ', username);
         const userId = await getUserId(username);
+        if (!userId) {
+            console.log('Cannot find ', username);
+            continue;
+        }
         console.log('UserId: ', userId);
         const data = await getFollowers(userId, username);
         users.push(data)

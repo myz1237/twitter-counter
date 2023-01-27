@@ -64,6 +64,12 @@ const writeFile = (data, userName) => {
 
 export const getUserId = async (username) => {
     const initUrl = `https://api.twitter.com/2/users/by/username/${username}`;
-    const result = await myAxios.get(initUrl);
-    return JSON.parse(result.data).data.id;
+    try {
+        const result = await myAxios.get(initUrl);
+        return JSON.parse(result.data)?.data?.id;
+    } catch (error) {
+        console.log(error?.message);
+        return false
+    }    
+    
 }
