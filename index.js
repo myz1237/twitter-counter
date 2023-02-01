@@ -8,7 +8,6 @@ import fs from 'fs'
 */
 
 const nameList = [
-	'zhusu',
 	'richwgalvin',
 	'SBF_FTX',
 	'CryptoCobain',
@@ -88,7 +87,8 @@ const nameList = [
 	'novogratz',
 	'ethereumJoseph',
 	'ErikVoorhees',
-	'gavinandresen'
+	'gavinandresen',
+	'zhusu'
 ];
 
 async function main(){
@@ -108,7 +108,7 @@ async function main(){
         }
         console.log(`${username} has ${count} followers, it will take ${Math.ceil(count / 1000)} mins to fetch all followers.`)
         console.log('Fetching...');
-        await getFollowers(userId, username);
+        await getFollowers(userId, username, count);
         console.log(`Fetching followers of ${username} is done.`)
     }
 

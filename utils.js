@@ -4,7 +4,7 @@ import fs from 'fs'
 
 const INTERVAL = 62 * 1000 // request per 62 secs
 
-export const getFollowers = async (userId, userName) => {
+export const getFollowers = async (userId, userName, count) => {
     let params = {
         "max_results": 1000,
         "user.fields": "public_metrics"
@@ -29,7 +29,7 @@ export const getFollowers = async (userId, userName) => {
         }
         await sleep(INTERVAL);
     }
-    fs.writeFileSync('result.csv', `User Count,${users.length}\r\n`, {flag: 'a'});
+    fs.writeFileSync('result.csv', `Follower Count,${count}\r\n`, {flag: 'a'});
 }
 
 function sleep (time) {
