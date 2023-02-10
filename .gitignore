@@ -1,3 +1,4 @@
 result.csv
 .env
 node_modules
+result*

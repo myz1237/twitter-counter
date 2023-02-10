@@ -50,7 +50,7 @@ const getPage = async (params, nextToken, url) => {
 
 const writeFile = (data, userName) => {
     const csvContent = data.reduce((pre, cur) => {
-        return pre + `${userName},${cur.name ?? 'Unknown'}, ${cur.username ?? 'Unknown'},${cur?.public_metrics?.followers_count ?? 0},${cur?.public_metrics?.following_count ?? 0},${cur?.public_metrics?.tweet_count ?? 0},${cur?.public_metrics?.listed_count ?? 0}\r\n`;
+        return pre + `"${userName}","${cur.name ?? 'Unknown'}","${cur.username ?? 'Unknown'}",${cur?.public_metrics?.followers_count ?? 0},${cur?.public_metrics?.following_count ?? 0},${cur?.public_metrics?.tweet_count ?? 0},${cur?.public_metrics?.listed_count ?? 0}\r\n`;
     }, "");
 
     fs.writeFileSync('result.csv', csvContent, {flag: 'a'});
